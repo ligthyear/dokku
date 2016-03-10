@@ -4,9 +4,12 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
 case "$1" in
   help | shell:help)
-    cat<<EOF
-    shell, Spawn dokku shell
-EOF
+    help_contnet='    shell, Spawn dokku shell'
+    if [[ $1 = "shell:help" ]] ; then
+        echo "$help_content" | sed "/^\s*$help_topic/!d" | sort | column -c2 -t -s,
+    else
+        echo "$help_content"
+    fi
     ;;
 
   *)

@@ -4,10 +4,13 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
 case "$1" in
   help | tar:help)
-    cat<<EOF
-    tar:in <app>, Reads an tarball containing the app from stdin
-    tar:from <app> <url>, Loads an app tarball from url.
-EOF
+    help_content='    tar:in <app>, Reads an tarball containing the app from stdin
+    tar:from <app> <url>, Loads an app tarball from url.'
+    if [[ $1 = "tar:help" ]] ; then
+        echo "$help_content" | sed "/^\s*$help_topic/!d" | sort | column -c2 -t -s,
+    else
+        echo "$help_content"
+    fi
     ;;
 
   *)
