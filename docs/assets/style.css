@@ -238,6 +238,10 @@ blockquote {
   margin-bottom: 30px;
 }
 blockquote.new-as-of {
+  border-left: 4px solid #f0ad4e;
+  background-color: #eea236;
+}
+blockquote.not-yet-released {
   border-left: 4px solid #ef5b58;
   background-color: #f9ad76;
 }
